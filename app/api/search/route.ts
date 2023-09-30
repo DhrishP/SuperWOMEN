@@ -21,10 +21,11 @@ export async function POST(req: Request) {
     const json = await res.json();
     const embedding = json.data[0].embedding;
 
-    const { data: chunks, error } = await supabaseAdmin.rpc("pg_search", {
+    const { data: chunks, error } = await supabaseAdmin.rpc("law_search", {
       query_embedding: embedding,
-      similarity_threshold: 0.01,
+      similarity_threshold: 0.5,
       match_count: matches,
+
     });
 
     if (error) {
