@@ -225,7 +225,6 @@ export default function Home() {
       </Head>
 
       <div className="flex flex-col h-screen">
-        <Navbar />
         <div className="flex-1 overflow-auto">
           <div className="mx-auto flex h-full w-full max-w-[750px] flex-col items-center px-3 pt-4 sm:pt-8">
             <button
