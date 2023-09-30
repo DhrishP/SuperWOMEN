@@ -66,7 +66,7 @@
   }
 }
  
-.background_gr{
+/* .background_gr{
   background-image: linear-gradient(
   175deg,
   hsl(300deg 100% 59%) 0%,
@@ -74,7 +74,7 @@
   hsl(314deg 100% 64%) 35%,
   hsl(320deg 94% 65%) 45%,
   hsl(326deg 85% 66%) 85%
-);}
+);} */
 
 @layer base {
   * {
@@ -83,4 +83,11 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+body{
+  background-image: url(../public/pink\ bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  
 }
