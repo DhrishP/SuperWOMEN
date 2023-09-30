@@ -6,25 +6,34 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "scrape": "tsx scripts/scrape.ts",
+    "embed": "tsx scripts/embed.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.25.1",
     "@prisma/client": "^5.3.1",
+    "@supabase/supabase-js": "^2.37.0",
+    "ai": "^2.2.13",
     "next": "latest",
+    "openai": "^4.11.0",
     "prisma": "^5.3.1",
     "react": "latest",
     "react-dom": "latest"
   },
   "devDependencies": {
+    "@next/env": "^13.5.3",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "autoprefixer": "latest",
+    "axios": "^1.5.1",
     "eslint": "latest",
     "eslint-config-next": "latest",
+    "gpt-3-encoder": "^1.1.4",
     "postcss": "latest",
     "tailwindcss": "latest",
+    "tsx": "^3.13.0",
     "typescript": "latest"
   }
 }
