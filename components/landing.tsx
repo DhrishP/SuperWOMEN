@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import "@/app/(root)/root.css";
 import { Siren, Bot, File, Shield, Lock } from "lucide-react";
 import {useUser} from '@clerk/nextjs'
-import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
+import DialogForm from "./ui/dialog-form";
 const Landing = () => {
   const {isSignedIn} = useUser()
   const router = useRouter()
@@ -56,14 +56,18 @@ const Landing = () => {
                 <File className="w-4 h-4 mr-2" />
                 Documentation for laws for protection of women
               </Button>
+              <DialogForm>
               <Button
                 size={"lg"}
                 className="w-[30rem] bg-transparent hover:bg-slate-200"
                 variant={"outline"}
               >
                 <Shield className="w-4 h-4 mr-2" />
+             
                 Emergency form
+             
               </Button>
+              </DialogForm>
             </div>
 
             <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism"></div>

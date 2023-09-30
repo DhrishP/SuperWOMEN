@@ -1,4 +1,4 @@
-import Image from 'next/image'
+"use client"
 import Landing from '@/components/landing'
 import { Navbarmain } from '@/components/navbarmain'
 

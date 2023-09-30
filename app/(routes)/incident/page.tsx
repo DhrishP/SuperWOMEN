@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import  TextareaAutosize from 'react-textarea-autosize'
 import {
   Form,
   FormControl,
@@ -13,7 +14,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { cn } from "@/lib/utils";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import ImageUpload from "@/components/image-upload";
 
@@ -31,7 +31,7 @@ const IncidentPage = () => {
   });
 
   return (
-    <div className="pl-6 w-1/3 flex items-start mt-10">
+    <div className="pl-6 w-screen h-[70vh] flex items-center justify-center mt-10">
       <Form {...form}>
         <form className="space-y-5">
           <FormField
@@ -41,7 +41,7 @@ const IncidentPage = () => {
               { field } //field passes imageurl array
             ) => (
               <FormItem>
-                <FormLabel className="font-bold text-primary">
+                <FormLabel className="font-bold text-lg text-primary">
                   Add an evidence
                 </FormLabel>
                 <FormControl>
@@ -63,10 +63,10 @@ const IncidentPage = () => {
             control={form.control}
             name="label"
             render={({ field }) => (
-              <FormItem>
-                <FormLabel className="font-bold text-primary">Incident occured</FormLabel>
+              <FormItem className="flex flex-col">
+                <FormLabel className="font-bold text-primary text-lg">Incident occured</FormLabel>
                 <FormControl>
-                  <Input placeholder="Description about the incident...." {...field} />
+                  <TextareaAutosize className="p-4 rounded-lg" cols={30} minRows={7} maxRows={15} placeholder="Enter details about the incident..."/>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -74,7 +74,7 @@ const IncidentPage = () => {
           />
           <div className={cn("flex ")}>
             <Button
-              className="hover:bg-white hover:text-black hover:border-black border-2 px-3 "
+              className="hover:bg-white hover:text-black hover:border-black  px-3 "
               type="submit"
             >
               Submit
