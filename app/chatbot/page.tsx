@@ -11,6 +11,7 @@ import {
 import endent from "endent";
 import Head from "next/head";
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
+import toast from "react-hot-toast";
 
 
   export type lawChunk = {
@@ -102,7 +103,8 @@ export default function Home() {
 
     if (!searchResponse.ok) {
       setLoading(false);
-      throw new Error(searchResponse.statusText);
+      toast.error("Invalid or expired API key.")
+      return
     }
 
     const results: lawChunk[] = await searchResponse.json();
@@ -125,7 +127,8 @@ export default function Home() {
 
     if (!answerResponse.ok) {
       setLoading(false);
-      throw new Error(answerResponse.statusText);
+      toast.error("Something went wrong.");
+      return
     }
 
     const data = answerResponse.body;
