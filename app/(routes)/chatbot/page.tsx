@@ -1,7 +1,7 @@
 "use client"
 import { Answer } from "@/components/Answer/answer";
 import { Footer } from "@/components/footer";
-import { Navbar } from "@/components/navbar";
+
 
 import {
   IconArrowRight,
