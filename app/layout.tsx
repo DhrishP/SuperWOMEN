@@ -21,7 +21,7 @@ export default function RootLayout({
     <ClerkProvider>
     <html lang="en">
       <body className={urbanist.className}>
-        <Navbar/>
+       
         {children}</body>
     </html>
     </ClerkProvider>
