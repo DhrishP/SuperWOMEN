@@ -1,7 +1,11 @@
 
+
 import { FC } from "react";
+
 import Image from "next/image";
 import { Button } from "./ui/button";
+import z, { boolean } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Dialog,
   DialogContent,
@@ -12,13 +16,13 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import TextareaAutosize from "react-textarea-autosize";
-import { Input } from "@/components/ui/input";
-import { Label } from "./ui/label";
 
 import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
+import ImageUpload from "./image-upload";
 
 export const Navbar: FC = () => {
+
   return (
     <div className="flex h-[60px] border-b border-gray-300 py-2 px-8 items-center justify-between">
       <div className=" flex items-center">
@@ -33,11 +37,77 @@ export const Navbar: FC = () => {
         </ul>
       </div>
       <div className="flex items-center space-x-2">
+
         <Button variant={"destructive"} size={"sm"} type="button" >Report an incident</Button>
         <div>
+
           <UserButton afterSignOutUrl="/" />
-        </div>
+
       </div>
     </div>
   );
 };
+
+/*
+    <Form {...form}>
+              <form className="space-y-5">
+                <FormField
+                  control={form.control}
+                  name="ImageUrl"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="font-bold text-primary">
+                        Incident report
+                      </FormLabel>
+                      <FormControl>
+                        <TextareaAutosize
+                          minRows={3}
+                          maxRows={10}
+                          id="incident-description"
+                          className="border border-gray-300 rounded-md p-2 w-full "
+                          placeholder="Describe the incident in as much detail as possible."
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="ImageUrl"
+                  render={(
+                    { field } //field passes imageurl array
+                  ) => (
+                    <FormItem>
+                      <FormLabel className="font-bold text-primary">
+                        Add an Background Image
+                      </FormLabel>
+                      <FormControl>
+                        <ImageUpload
+                          onChange={(url) => {
+                            field.onChange(url);
+                            
+                            //Updates the array with the current url
+                          }}
+                          onRemove={() => {
+                            field.onChange("");
+                          }}
+                          values={field.value ? [field.value] : []} //If we want multiple images then we can pass here an array of values
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <div className={cn("flex ")}>
+                  <Button
+                    className="hover:bg-white hover:text-black hover:border-black border-2 px-3 "
+                    type="submit"
+                  >
+                    Submit
+                  </Button>
+                </div>
+              </form>
+            </Form>
+
+*/
