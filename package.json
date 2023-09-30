@@ -30,6 +30,7 @@
     "react-dom": "latest",
     "react-hot-toast": "^2.4.1",
     "react-textarea-autosize": "^8.5.3",
+    "sharp": "^0.32.6",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7"
   },
