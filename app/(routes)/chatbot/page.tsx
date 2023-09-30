@@ -1,7 +1,6 @@
-"use client"
+"use client";
 import { Answer } from "@/components/Answer/answer";
 import { Footer } from "@/components/footer";
-
 
 import {
   IconArrowRight,
@@ -13,24 +12,22 @@ import Head from "next/head";
 import { KeyboardEvent, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 
-
-  export type lawChunk = {
-    content:string,
-    content_length:number,
-    gpt_tokens:number,
-    embedding:number[],
-  }
+export type lawChunk = {
+  content: string;
+  content_length: number;
+  gpt_tokens: number;
+  embedding: number[];
+};
 
 export default function Home() {
-
-
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [query, setQuery] = useState<string>("");
   const [chunks, setChunks] = useState<lawChunk[]>([]);
+
   const [answer, setAnswer] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
-  const [more,setmore] = useState<boolean>(false);
+  const [more, setmore] = useState<boolean>(false);
 
   const [showSettings, setShowSettings] = useState<boolean>(false);
   const [mode, setMode] = useState<"search" | "chat">("chat");
@@ -103,8 +100,8 @@ export default function Home() {
 
     if (!searchResponse.ok) {
       setLoading(false);
-      toast.error("Invalid or expired API key.")
-      return
+      toast.error("Invalid or expired API key.");
+      return;
     }
 
     const results: lawChunk[] = await searchResponse.json();
@@ -128,7 +125,7 @@ export default function Home() {
     if (!answerResponse.ok) {
       setLoading(false);
       toast.error("Something went wrong.");
-      return
+      return;
     }
 
     const data = answerResponse.body;
@@ -366,23 +363,25 @@ export default function Home() {
                 <div className="mt-6 mb-16">
                   <div className="font-bold text-2xl">Passages</div>
 
-                {chunks.map((chunk, index) => (
+                  {chunks.map((chunk, index) => (
                     <div key={index}>
-                        <div className="mt-4 border border-zinc-600 rounded-lg p-4">
-                            <div className="mt-2">
-                                {more ? chunk.content : chunk.content.split(' ').slice(0, 30).join(' ')}
-                                {chunk.content.split(' ').length > 30 && (
-                                    <span
-                                        className="ml-2 font-bold cursor-pointer text-blue-500"
-                                        onClick={() => setmore(!more)}
-                                    >
-                                        {more ? "show less" : "show more..."}
-                                    </span>
-                                )}
-                            </div>
+                      <div className="mt-4 border border-zinc-600 rounded-lg p-4">
+                        <div className="mt-2">
+                          {more
+                            ? chunk.content
+                            : chunk.content.split(" ").slice(0, 30).join(" ")}
+                          {chunk.content.split(" ").length > 30 && (
+                            <span
+                              className="ml-2 font-bold cursor-pointer text-blue-500"
+                              onClick={() => setmore(!more)}
+                            >
+                              {more ? "show less" : "show more..."}
+                            </span>
+                          )}
                         </div>
+                      </div>
                     </div>
-                ))}
+                  ))}
                 </div>
               </div>
             ) : chunks.length > 0 ? (
@@ -390,20 +389,22 @@ export default function Home() {
                 <div className="font-bold text-2xl">Passages</div>
                 {chunks.map((chunk, index) => (
                   <div key={index}>
-                  <div className="mt-4 border border-zinc-600 rounded-lg p-4">
+                    <div className="mt-4 border border-zinc-600 rounded-lg p-4">
                       <div className="mt-2">
-                          {more ? chunk.content : chunk.content.split(' ').slice(0, 30).join(' ')}
-                          {chunk.content.split(' ').length > 30 && (
-                              <span
-                                  className="ml-2 font-bold cursor-pointer text-blue-500"
-                                  onClick={() => setmore(!more)}
-                              >
-                                  {more ? "show less" : "show more..."}
-                              </span>
-                          )}
+                        {more
+                          ? chunk.content
+                          : chunk.content.split(" ").slice(0, 30).join(" ")}
+                        {chunk.content.split(" ").length > 30 && (
+                          <span
+                            className="ml-2 font-bold cursor-pointer text-blue-500"
+                            onClick={() => setmore(!more)}
+                          >
+                            {more ? "show less" : "show more..."}
+                          </span>
+                        )}
                       </div>
+                    </div>
                   </div>
-              </div>
                 ))}
               </div>
             ) : (
