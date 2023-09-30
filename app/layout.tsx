@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter, Urbanist } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
-import { Navbar } from "@/components/navbar";
+
 import { ToastProvider } from "@/providers/toast-provider";
 
 const urbanist = Urbanist({
