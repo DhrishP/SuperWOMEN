@@ -5,7 +5,6 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Navbar } from "@/components/navbar";
 import { ToastProvider } from "@/providers/toast-provider";
 
-const inter = Inter({ subsets: ["latin"] });
 const urbanist = Urbanist({
   subsets: ["latin"],
   weight: ["100", "200", "500", "900", "800"],
