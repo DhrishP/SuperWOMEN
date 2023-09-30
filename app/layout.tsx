@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter , Urbanist } from 'next/font/google'
 import { ClerkProvider } from '@clerk/nextjs'
+import { Navbar } from '@/components/navbar'
 
 const inter = Inter({ subsets: ['latin'] })
 const urbanist = Urbanist({ subsets: ['latin'] ,weight:['100','200',"500","900","800"]})
@@ -19,7 +20,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
     <html lang="en">
-      <body className={urbanist.className}>{children}</body>
+      <body className={urbanist.className}>
+        <Navbar/>
+        {children}</body>
     </html>
     </ClerkProvider>
   )
