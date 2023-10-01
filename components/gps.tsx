@@ -5,7 +5,7 @@ interface Location {
   longitude: number;
 }
 
-const MyComponent = () => {
+export const MyComponent = () => {
   const [location, setLocation] = useState<Location | null>(null);
 
   useEffect(() => {
@@ -26,18 +26,10 @@ const MyComponent = () => {
     }
   }, []); // The empty dependency array ensures that this effect runs once when the component mounts
 
-  return (
-    <div>
-      {location ? (
-        <div>
-          <p>Latitude: {location.latitude}</p>
-          <p>Longitude: {location.longitude}</p>
-        </div>
-      ) : (
-        <p>Loading location...</p>
-      )}
-    </div>
-  );
-};
+  if (location) {
+    return location
+  }else{
+    return null
+  }
 
-export default MyComponent;
+}

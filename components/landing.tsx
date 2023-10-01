@@ -1,31 +1,35 @@
-"use client"
+"use client";
 import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import "@/app/(root)/root.css";
 import { Siren, Bot, File, Shield, Lock } from "lucide-react";
-import {useUser} from '@clerk/nextjs'
+import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
-import DialogForm from "./ui/dialog-form";
+import { mailOptions, transporter } from "@/lib/transporter";
+import { MyComponent } from "./gps";
+import axios from "axios";
 const Landing = () => {
-  const {isSignedIn} = useUser()
-  const router = useRouter()
-  const PDF_FILE_URL="http://localhost:3000/med.pdf";
-  const downloadFileAtUrl = (url:string) => {
-    const fileName = url.split('/').pop();
-    const aTag = document.createElement('a');
+  const { isSignedIn } = useUser();
+  const router = useRouter();
+  const coords = MyComponent();
+  const PDF_FILE_URL = "http://localhost:3000/med.pdf";
+  const downloadFileAtUrl = (url: string) => {
+    const fileName = url.split("/").pop();
+    const aTag = document.createElement("a");
     aTag.href = url;
-    aTag.setAttribute('download', '');
+    aTag.setAttribute("download", "");
     document.body.appendChild(aTag);
     aTag.click();
-    aTag.remove();  
-  
-  }
-  const HandleClick = () =>{
-    console.log(isSignedIn)
-   if(!isSignedIn) {router.push('/sign-in')}
-   return
-  }
+    aTag.remove();
+  };
+  const HandleClick = async () => {
+    if (!isSignedIn) {
+      router.push("/sign-in");
+    }
+  const res:any = await axios.post('http:localhost:3000/api/nodemail',{coords})
+  console.log(res)
+  };
   return (
     <>
       <div className="flex w-full justify-center items-center overflow-y-hidden ">
@@ -45,10 +49,18 @@ const Landing = () => {
               <Button
                 size={"lg"}
                 onClick={HandleClick}
-                className={`w-[30rem]  ${isSignedIn?"hover:bg-red-400 ":"hover:bg-slate-300 bg-gray-500"}`}
-                variant={`${isSignedIn? "destructive" : "ghost"}`}
+                className={`w-[30rem]  ${
+                  isSignedIn
+                    ? "hover:bg-red-400 "
+                    : "hover:bg-slate-300 bg-gray-500"
+                }`}
+                variant={`${isSignedIn ? "destructive" : "ghost"}`}
               >
-               {isSignedIn?<Siren className="w-4 h-4 mr-2" />:<Lock className="w-4 h-4 mr-2" />} 
+                {isSignedIn ? (
+                  <Siren className="w-4 h-4 mr-2" />
+                ) : (
+                  <Lock className="w-4 h-4 mr-2" />
+                )}
                 Emergency
               </Button>
               <Button
@@ -57,30 +69,28 @@ const Landing = () => {
                 variant={"outline"}
               >
                 <a className="flex space-x-1 items-center" href="/chatbot">
-                <Bot className="w-4 h-4 mr-2" />
-                AI powered Chatbot
+                  <Bot className="w-4 h-4 mr-2" />
+                  AI powered Chatbot
                 </a>
               </Button>
               <Button
                 size={"lg"}
                 className="w-[30rem] bg-transparent hover:bg-slate-200"
-                variant={"outline"} onClick={()=>downloadFileAtUrl(PDF_FILE_URL)}
+                variant={"outline"}
+                onClick={() => downloadFileAtUrl(PDF_FILE_URL)}
               >
                 <File className="w-4 h-4 mr-2" />
                 Documentation for laws for protection of women
               </Button>
-            
+
               <Button
                 size={"lg"}
                 className="w-[30rem] bg-transparent hover:bg-slate-200"
                 variant={"outline"}
               >
                 <Shield className="w-4 h-4 mr-2" />
-             <a href="/form">  Emergency Contacts
-             </a>
-              
+                <a href="/form"> Emergency Contacts</a>
               </Button>
-             
             </div>
 
             <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism"></div>
@@ -93,6 +103,3 @@ const Landing = () => {
 };
 
 export default Landing;
-{
-  /*  */
-}

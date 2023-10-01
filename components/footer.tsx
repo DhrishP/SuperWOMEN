@@ -1,7 +1,7 @@
 import { IconBrandGithub, IconBrandTwitter } from "@tabler/icons-react";
 import { FC } from "react";
-import Gps from "./gps";
-import MyComponent from "./gps";
+
+import {MyComponent} from "./gps";
 
 export const Footer: FC = () => {
   return (
@@ -49,7 +49,6 @@ export const Footer: FC = () => {
           <IconBrandGithub size={24} />
         </a>
       </div>
-    <MyComponent/>
     </div>
   );
 };

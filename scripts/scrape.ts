@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { encode } from "gpt-3-encoder";
-import Gps from "@/components/gps";
+
 const CHUNK_SIZE = 1000;
 type StringChunk = {
   content: string;
@@ -65,9 +65,5 @@ const ChunkString = () => {
   return essayChunks;
 };
 // const array = ChunkString();
-const tp = async() =>{
-  const geo =  Gps()
-  console.log(geo)
-}
-tp()
+
 
