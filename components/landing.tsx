@@ -45,8 +45,10 @@ const Landing = () => {
                 className="w-[30rem] bg-transparent hover:bg-slate-200"
                 variant={"outline"}
               >
+                <a className="flex space-x-1 items-center" href="/chatbot">
                 <Bot className="w-4 h-4 mr-2" />
                 AI powered Chatbot
+                </a>
               </Button>
               <Button
                 size={"lg"}
@@ -56,18 +58,18 @@ const Landing = () => {
                 <File className="w-4 h-4 mr-2" />
                 Documentation for laws for protection of women
               </Button>
-              <DialogForm>
+            
               <Button
                 size={"lg"}
                 className="w-[30rem] bg-transparent hover:bg-slate-200"
                 variant={"outline"}
               >
                 <Shield className="w-4 h-4 mr-2" />
-             
-                Emergency form
-             
+             <a href="/form">  Emergency Contacts
+             </a>
+              
               </Button>
-              </DialogForm>
+             
             </div>
 
             <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism"></div>

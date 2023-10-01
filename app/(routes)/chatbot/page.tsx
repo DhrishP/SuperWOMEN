@@ -281,14 +281,14 @@ export default function Home() {
 
                 <div className="mt-4 flex space-x-2 justify-center">
                   <div
-                    className="flex cursor-pointer items-center space-x-2 rounded-full bg-green-500 px-3 py-1 text-sm text-white hover:bg-green-600"
+                    className="flex cursor-pointer items-center space-x-2 rounded-full bg-pink-500 px-3 py-1 text-sm text-white hover:bg-green-600"
                     onClick={handleSave}
                   >
                     Save
                   </div>
 
                   <div
-                    className="flex cursor-pointer items-center space-x-2 rounded-full bg-red-500 px-3 py-1 text-sm text-white hover:bg-red-600"
+                    className="flex cursor-pointer items-center space-x-2 rounded-full bg-blue-500 px-3 py-1 text-sm text-white hover:bg-red-600"
                     onClick={handleClear}
                   >
                     Clear
@@ -314,7 +314,7 @@ export default function Home() {
                 <button>
                   <IconArrowRight
                     onClick={mode === "search" ? handleSearch : handleAnswer}
-                    className="absolute right-2 top-2.5 h-7 w-7 rounded-full bg-blue-500 p-1 hover:cursor-pointer hover:bg-blue-600 sm:right-3 sm:top-3 sm:h-10 sm:w-10 text-white"
+                    className="absolute right-2 top-2.5 h-7 w-7 rounded-full bg-pink-500 p-1 hover:cursor-pointer hover:bg-pink-600 sm:right-3 sm:top-3 sm:h-10 sm:w-10 text-white"
                   />
                 </button>
               </div>

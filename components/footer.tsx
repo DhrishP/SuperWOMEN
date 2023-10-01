@@ -1,5 +1,7 @@
 import { IconBrandGithub, IconBrandTwitter } from "@tabler/icons-react";
 import { FC } from "react";
+import Gps from "./gps";
+import MyComponent from "./gps";
 
 export const Footer: FC = () => {
   return (
@@ -16,14 +18,14 @@ export const Footer: FC = () => {
         >
           Team Bitshifters
         </a>
-        based on the essays of
+        based on the laws of
         <a
           className="hover:opacity-50 ml-1"
           href="https://twitter.com/paulg"
           target="_blank"
           rel="noreferrer"
         >
-          Paul Graham
+         Indian institutions
         </a>
         .
       </div>
@@ -47,6 +49,7 @@ export const Footer: FC = () => {
           <IconBrandGithub size={24} />
         </a>
       </div>
+    <MyComponent/>
     </div>
   );
 };
