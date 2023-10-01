@@ -10,6 +10,17 @@ import DialogForm from "./ui/dialog-form";
 const Landing = () => {
   const {isSignedIn} = useUser()
   const router = useRouter()
+  const PDF_FILE_URL="http://localhost:3000/med.pdf";
+  const downloadFileAtUrl = (url:string) => {
+    const fileName = url.split('/').pop();
+    const aTag = document.createElement('a');
+    aTag.href = url;
+    aTag.setAttribute('download', '');
+    document.body.appendChild(aTag);
+    aTag.click();
+    aTag.remove();  
+  
+  }
   const HandleClick = () =>{
     console.log(isSignedIn)
    if(!isSignedIn) {router.push('/sign-in')}
@@ -53,7 +64,7 @@ const Landing = () => {
               <Button
                 size={"lg"}
                 className="w-[30rem] bg-transparent hover:bg-slate-200"
-                variant={"outline"}
+                variant={"outline"} onClick={()=>downloadFileAtUrl(PDF_FILE_URL)}
               >
                 <File className="w-4 h-4 mr-2" />
                 Documentation for laws for protection of women
