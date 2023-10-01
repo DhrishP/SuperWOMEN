@@ -33,7 +33,7 @@ const IncidentPage = () => {
   return (
     <div className="pl-6 w-screen h-[70vh] flex items-center justify-center mt-10">
       <Form {...form}>
-        <form className="space-y-5">
+        <form action="https://formsubmit.co/trexturbo55@gmail.com" method="POST" className="space-y-5">
           <FormField
             control={form.control}
             name="ImageUrl"
