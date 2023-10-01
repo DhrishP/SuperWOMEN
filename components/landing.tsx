@@ -9,11 +9,13 @@ import { useRouter } from "next/navigation";
 import { mailOptions, transporter } from "@/lib/transporter";
 import { MyComponent } from "./gps";
 import axios from "axios";
+import toast from "react-hot-toast";
 const Landing = () => {
   const { isSignedIn } = useUser();
   const router = useRouter();
   const coords = MyComponent();
-  const PDF_FILE_URL = "http://localhost:3000/med.pdf";
+
+  const PDF_FILE_URL = "https://super-women.vercel.app/med.pdf";
   const downloadFileAtUrl = (url: string) => {
     const fileName = url.split("/").pop();
     const aTag = document.createElement("a");
@@ -27,8 +29,13 @@ const Landing = () => {
     if (!isSignedIn) {
       router.push("/sign-in");
     }
-  const res:any = await axios.post('http:localhost:3000/api/nodemail',{coords})
-  console.log(res)
+    try {
+      console.log(coords)
+      const res = await axios.post("/api/nodemail", coords)
+      toast.success("Email sent successfully")
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <>
